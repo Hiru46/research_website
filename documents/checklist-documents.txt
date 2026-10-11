@@ -1,0 +1,4 @@
+CHECKLIST DOCUMENTS
+
+Replace this placeholder with the approved checklist document(s) before submission.
+This local file exists so the standalone website package keeps its document link intact.
