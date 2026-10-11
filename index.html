@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic project information website for AuraLearn, the AI-enabled intelligent study assistant, SLIIT R26-SE-022.">
+  <title>AuraLearn | R26-SE-022 Research Project</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #61717e;
+      --paper: #f4f7f5;
+      --white: #ffffff;
+      --teal: #117b72;
+      --teal-dark: #0b514d;
+      --mint: #d8f1e8;
+      --coral: #e86f51;
+      --yellow: #f1c75b;
+      --line: #d9e3df;
+      --shadow: 0 18px 50px rgba(23, 33, 43, 0.10);
+      --radius: 14px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .shell { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .skip-link { position: absolute; left: -999px; top: 12px; z-index: 20; }
+    .skip-link:focus { left: 12px; padding: 8px 12px; background: var(--white); }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(244, 247, 245, 0.94);
+      border-bottom: 1px solid rgba(217, 227, 223, 0.85);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-family: 'Trebuchet MS', Arial, sans-serif; font-weight: 700; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; color: var(--white); background: var(--teal); border-radius: 11px; font-size: 19px; box-shadow: 5px 5px 0 var(--yellow); }
+    .brand small { display: block; color: var(--muted); font: 500 10px 'Trebuchet MS', Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .nav-links a:hover, .nav-links a:focus { color: var(--teal); }
+    .menu-toggle { display: none; }
+    .menu-label { display: none; border: 1px solid var(--line); background: var(--white); border-radius: 8px; padding: 8px 11px; color: var(--ink); cursor: pointer; }
+
+    .hero { position: relative; overflow: hidden; padding: 90px 0 84px; background: var(--teal-dark); color: var(--white); }
+    .hero:after { content: ''; position: absolute; width: 390px; height: 390px; right: -110px; top: -155px; border: 54px solid rgba(241, 199, 91, .18); border-radius: 50%; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 70px; align-items: center; }
+    .eyebrow { color: var(--yellow); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1, h2, h3 { font-family: 'Trebuchet MS', Arial, sans-serif; line-height: 1.08; }
+    h1 { max-width: 720px; margin: 17px 0 20px; font-size: clamp(2.8rem, 7vw, 5.8rem); letter-spacing: -.06em; }
+    .hero-copy { max-width: 650px; color: #cce3dc; font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 17px; border: 1px solid transparent; border-radius: 8px; font-weight: 700; text-decoration: none; cursor: pointer; }
+    .button-primary { background: var(--yellow); color: var(--ink); }
+    .button-ghost { border-color: rgba(255, 255, 255, .35); color: var(--white); }
+    .hero-panel { padding: 25px; border: 1px solid rgba(255,255,255,.18); border-radius: var(--radius); background: rgba(255,255,255,.08); box-shadow: var(--shadow); }
+    .hero-panel h2 { margin: 0 0 20px; font-size: 21px; }
+    .metric { display: flex; justify-content: space-between; gap: 15px; padding: 13px 0; border-top: 1px solid rgba(255,255,255,.16); color: #cce3dc; font-size: 14px; }
+    .metric strong { color: var(--white); text-align: right; }
+
+    section { padding: 88px 0; }
+    .section-heading { max-width: 720px; margin-bottom: 38px; }
+    .section-heading h2 { margin: 10px 0 12px; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.045em; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 17px; }
+    .alt { background: var(--white); }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+    .alt .card { background: var(--paper); }
+    .card h3 { margin: 0 0 10px; font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); }
+    .card ul { margin: 13px 0 0; padding-left: 20px; color: var(--muted); }
+    .tag { display: inline-block; margin-bottom: 16px; padding: 5px 9px; border-radius: 5px; background: var(--mint); color: var(--teal-dark); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .accent-card { border-top: 4px solid var(--coral); }
+
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; align-items: stretch; }
+    .flow-step { position: relative; min-height: 150px; padding: 18px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); }
+    .flow-step:not(:last-child):after { content: '>'; position: absolute; right: -15px; top: 56px; color: var(--coral); font-size: 21px; font-weight: 700; }
+    .flow-number { color: var(--coral); font: 700 13px 'Trebuchet MS', Arial, sans-serif; }
+    .flow-step h3 { margin: 24px 0 7px; font-size: 17px; }
+    .flow-step p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); }
+    table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    th, td { padding: 16px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: var(--teal-dark); color: var(--white); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    td { color: var(--muted); font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+    td strong { color: var(--ink); }
+    .status { display: inline-block; padding: 4px 8px; border-radius: 99px; background: var(--mint); color: var(--teal-dark); font-size: 12px; font-weight: 700; }
+    .status.pending { background: #fff2ce; color: #795c00; }
+
+    .component-banner { display: grid; grid-template-columns: .7fr 1.3fr; gap: 24px; align-items: center; padding: 30px; border-radius: var(--radius); background: var(--coral); color: var(--white); }
+    .component-banner h2 { margin: 0; font-size: 30px; }
+    .component-banner p { margin: 0; color: #fff2ed; }
+    .formula { margin-top: 17px; padding: 15px; border-radius: 8px; background: rgba(23, 33, 43, .18); font-family: monospace; color: var(--white); }
+
+    .doc-list { display: grid; gap: 12px; }
+    .doc { display: flex; justify-content: space-between; gap: 18px; align-items: center; padding: 17px 19px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); text-decoration: none; }
+    .doc:hover { border-color: var(--teal); box-shadow: 0 7px 18px rgba(23,33,43,.06); }
+    .doc strong { display: block; }
+    .doc span { color: var(--muted); font-size: 13px; }
+    .doc-arrow { color: var(--coral); font-size: 22px; }
+    .person { display: flex; gap: 15px; align-items: center; }
+    .initials { width: 50px; height: 50px; display: grid; place-items: center; flex: 0 0 50px; border-radius: 50%; background: var(--teal); color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    .person p { margin: 2px 0 0; font-size: 13px; }
+    .contact-form { display: grid; gap: 13px; }
+    label { font-size: 13px; font-weight: 700; }
+    input, textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); font: inherit; }
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus { outline: 3px solid rgba(17,123,114,.18); border-color: var(--teal); }
+    .form-message { min-height: 24px; margin: 0; color: var(--teal-dark); font-size: 13px; font-weight: 700; }
+
+    footer { padding: 28px 0; background: var(--ink); color: #b8c7c5; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; font-size: 13px; }
+    .footer-inner a { color: var(--yellow); }
+    [data-reveal] { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .component-banner { grid-template-columns: 1fr; gap: 32px; }
+      .flow { grid-template-columns: repeat(2, 1fr); }
+      .flow-step:not(:last-child):after { display: none; }
+    }
+    @media (max-width: 700px) {
+      .shell { width: min(var(--max), calc(100% - 28px)); }
+      .nav { min-height: 66px; }
+      .menu-label { display: block; }
+      .nav-links { display: none; position: absolute; left: 14px; right: 14px; top: 62px; padding: 15px; flex-direction: column; align-items: stretch; gap: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--white); box-shadow: var(--shadow); }
+      .menu-toggle:checked ~ .nav-links { display: flex; }
+      .nav-links a { padding: 10px; }
+      .hero { padding: 65px 0; }
+      section { padding: 62px 0; }
+      .grid-2, .grid-3, .flow { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *:before, *:after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#home" aria-label="Adaptive Reminder System home">
+        <span class="brand-mark">AR</span>
+        <span>AuraLearn<small>Academic project website</small></span>
+      </a>
+      <input class="menu-toggle" type="checkbox" id="menu-toggle">
+      <label class="menu-label" for="menu-toggle">Menu</label>
+      <nav id="site-nav" class="nav-links" aria-label="Main navigation">
+        <a href="#domain">Domain</a>
+        <a href="#components">Components</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#milestones">Milestones</a>
+        <a href="#documents">Documents</a>
+        <a href="#presentations">Slides</a>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="shell hero-grid">
+        <div data-reveal>
+          <div class="eyebrow">SLIIT research project / R26-SE-022</div>
+          <h1>An intelligent study assistant for the whole learning journey.</h1>
+          <p class="hero-copy">AuraLearn is an AI-enabled intelligent study assistant that turns lecture materials into useful study resources, supports grounded questions, observes learning readiness, and adapts revision reminders to the learner.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#domain">Explore the project</a>
+            <a class="button button-ghost" href="#documents">View project files</a>
+          </div>
+        </div>
+        <aside class="hero-panel" data-reveal aria-label="Project summary">
+          <h2>At a glance</h2>
+          <div class="metric"><span>Project focus</span><strong>AI-enabled study support</strong></div>
+          <div class="metric"><span>Learning path</span><strong>Material to revision</strong></div>
+          <div class="metric"><span>Research modules</span><strong>Four integrated components</strong></div>
+          <div class="metric"><span>Prototype stack</span><strong>Next.js + FastAPI + ML services</strong></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="domain">
+      <div class="shell">
+        <div class="section-heading" data-reveal>
+          <div class="eyebrow" style="color: var(--teal);">01 / Domain</div>
+          <h2>One platform for preparing, understanding, and remembering.</h2>
+          <p>AuraLearn addresses the fragmented study workflow by connecting content processing, grounded assistance, emotion and attention signals, and adaptive revision support in one research prototype.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card accent-card" data-reveal><span class="tag">Literature survey</span><h3>Intelligent learning support</h3><p>The project brings together educational summarisation, retrieval-augmented generation, affective computing, and spaced repetition to support the learner across a study cycle.</p></article>
+          <article class="card" data-reveal><span class="tag">Research gap</span><h3>Tools are often disconnected</h3><p>Summaries, tutors, emotion-aware interfaces, and revision reminders are commonly treated as separate tools. AuraLearn investigates how their outputs can inform one another.</p></article>
+          <article class="card" data-reveal><span class="tag">Research problem</span><h3>How can study support adapt?</h3><p>The project investigates how learning content, questions, learner state, and review history can be combined to deliver more relevant and timely academic assistance.</p></article>
+          <article class="card" data-reveal><span class="tag">Objectives</span><h3>Support the complete study loop</h3><ul><li>Convert lecture materials into structured study resources.</li><li>Answer questions using retrieved source knowledge.</li><li>Recognise emotion and attention-related signals.</li><li>Personalise reminders and revision activities.</li></ul></article>
+          <article class="card" data-reveal><span class="tag">Technologies used</span><h3>Full-stack research prototype</h3><p>Next.js and HTML/CSS provide the interfaces; FastAPI and Python services provide APIs; MongoDB stores application state; transformer models, Sentence-BERT, FAISS, MediaPipe, Random Forest, and SM-2 support the research modules.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="components">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">02 / Research components</div><h2>Four components, one study experience.</h2><p>Each component has a distinct research responsibility, while the integrated platform connects their outputs into a learner workflow.</p></div>
+        <div class="grid-2">
+          <article class="card" data-reveal><span class="tag">Module 1 / IT22187178</span><h3>Lecture summarisation</h3><p>Processes lecture materials and produces concise, high-yield study content.</p><ul><li>BART/T5 transformer approach</li><li>Importance ranking</li><li>KEY, MEDIUM, and LOW information tags</li><li>Flashcard generation</li></ul></article>
+          <article class="card" data-reveal><span class="tag">Module 2 / IT22120120</span><h3>Hallucination-safe tutor</h3><p>Uses retrieval before generation so answers remain grounded in the student's uploaded learning materials.</p><ul><li>Sentence-BERT encoding</li><li>FAISS vector search</li><li>Top-k context retrieval</li><li>Uncertainty scoring</li></ul></article>
+          <article class="card" data-reveal><span class="tag">Module 3 / IT22224552</span><h3>Emotion detection</h3><p>Analyses facial and eye-behaviour signals during study sessions to estimate learning-relevant affect and attention.</p><ul><li>MediaPipe Face Mesh</li><li>468 landmark points</li><li>Eye Aspect Ratio and blink analysis</li><li>Five-class emotion output</li></ul></article>
+          <article class="card accent-card" data-reveal><span class="tag">Module 4 / IT22371690</span><h3>Emotion and progress-aware reminders</h3><p>Combines readiness, memory retention, review urgency, and topic context to decide when and how to prompt revision.</p><ul><li>Readiness model and safety rules</li><li>SM-2 spaced repetition engine</li><li>Adaptive send, delay, and skip decisions</li><li>Personalised activity recommendations</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="shell">
+        <div class="section-heading" data-reveal>
+          <div class="eyebrow" style="color: var(--teal);">03 / Architecture and methodology</div>
+          <h2>From uploaded material to adaptive study action.</h2>
+          <p>The platform is organised as a sequence of services. Content becomes searchable study knowledge, learner state becomes an interpretable signal, and the reminder component closes the loop through feedback.</p>
+        </div>
+        <div class="flow" data-reveal>
+          <div class="flow-step"><span class="flow-number">01</span><h3>Upload material</h3><p>Lecture PDFs and PPTX files enter the learning workspace.</p></div>
+          <div class="flow-step"><span class="flow-number">02</span><h3>Summarise</h3><p>Important content becomes summaries, tags, and flashcards.</p></div>
+          <div class="flow-step"><span class="flow-number">03</span><h3>Ask grounded questions</h3><p>Retrieval brings relevant source chunks to the AI tutor.</p></div>
+          <div class="flow-step"><span class="flow-number">04</span><h3>Monitor study state</h3><p>Emotion and attention cues inform readiness and intervention.</p></div>
+          <div class="flow-step"><span class="flow-number">05</span><h3>Revise adaptively</h3><p>Retention and feedback guide the next reminder and activity.</p></div>
+        </div>
+        <div class="grid-3" style="margin-top: 28px;" data-reveal>
+          <article class="card"><span class="tag">Frontend</span><h3>Next.js experience</h3><p>Dashboard, study workspace, authentication, focus views, reminder queue, and project demonstrations.</p></article>
+          <article class="card"><span class="tag">Backend services</span><h3>Python APIs</h3><p>FastAPI services coordinate authentication, content processing, tutoring, emotion inputs, reminders, and evaluation routes.</p></article>
+          <article class="card"><span class="tag">Data and models</span><h3>Research infrastructure</h3><p>MongoDB stores learner and reminder state; vector search, ML models, SM-2, and evaluation scripts support the research modules.</p></article>
+        </div>
+        <div class="component-banner" style="margin-top: 28px;" data-reveal>
+          <h2>Reminder module spotlight</h2>
+          <div><p>The reminder component is one part of the integrated system. It receives learner-state and content context, then returns an explainable revision decision and activity recommendation.</p><div class="formula">R(t) = exp(-t / S) &nbsp;&nbsp; | &nbsp;&nbsp; Priority = (1 - R) x 100</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="milestones">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">04 / Milestones</div><h2>Assessment trail.</h2><p>Use this section to present the complete project journey from proposal to final demonstration. Dates and marks are intentionally shown as confirmation fields rather than invented results.</p></div>
+        <div class="table-wrap" data-reveal>
+          <table><thead><tr><th>Assessment</th><th>Evidence</th><th>Date</th><th>Marks</th><th>Status</th></tr></thead><tbody>
+            <tr><td><strong>Project Proposal</strong></td><td>Problem definition, objectives, literature survey, and initial methodology.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">Completed / update</span></td></tr>
+            <tr><td><strong>Progress Presentation 1</strong></td><td>Early research progress, system concept, and component responsibilities.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">Add evidence</span></td></tr>
+            <tr><td><strong>Progress Presentation 2</strong></td><td>Prototype demonstration and reminder pipeline audit scenarios.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">Prototype evidence</span></td></tr>
+            <tr><td><strong>Final Assessment</strong></td><td>Final report, integrated system, evaluation, and presentation.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">Upcoming</span></td></tr>
+            <tr><td><strong>Viva</strong></td><td>Individual explanations of all project components and each member's contribution.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">Upcoming</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="documents">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">05 / Documents</div><h2>Project record.</h2><p>Links below point to files already present in the project workspace. Add the remaining approved documents before uploading the website source.</p></div>
+        <div class="doc-list" data-reveal>
+          <a class="doc" href="documents/research-proposal.docx"><span><strong>Research proposal</strong><span>Project proposal document</span></span><span class="doc-arrow">&#8599;</span></a>
+          <a class="doc" href="documents/project-readme.md"><span><strong>Project README</strong><span>Repository overview and setup information</span></span><span class="doc-arrow">&#8599;</span></a>
+          <a class="doc" href="documents/backend-readme.md"><span><strong>Backend documentation</strong><span>API, architecture, testing, and deployment notes</span></span><span class="doc-arrow">&#8599;</span></a>
+          <a class="doc" href="documents/reminder-audit-tests.py"><span><strong>Reminder audit tests</strong><span>Executable scenarios for the adaptive pipeline</span></span><span class="doc-arrow">&#8599;</span></a>
+          <a class="doc" href="documents/evaluation-readme.md"><span><strong>Evaluation framework</strong><span>Metrics, baselines, and research evaluation structure</span></span><span class="doc-arrow">&#8599;</span></a>
+          <a class="doc" href="documents/project-charter.txt"><span><strong>Project Charter</strong><span>Local submission slot for the approved project charter.</span></span><span class="status pending">Replace file</span></a>
+          <a class="doc" href="documents/checklist-documents.txt"><span><strong>Checklist documents</strong><span>Local submission slot for the approved checklist files.</span></span><span class="status pending">Replace file</span></a>
+          <a class="doc" href="documents/final-document-set.txt"><span><strong>Final document set</strong><span>Local submission slot for the approved final documents.</span></span><span class="status pending">Replace file</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentations">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">06 / Presentations</div><h2>Slides used to tell the story.</h2><p>Keep this area ready for every presentation stage. Only link files that have been approved for public viewing.</p></div>
+        <div class="grid-3" data-reveal>
+          <article class="card"><span class="tag">Presentation 01</span><h3>Proposal presentation</h3><p>Research context, problem, objectives, and proposed solution.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/proposal-presentation.txt">Replace slide file</a></p></article>
+          <article class="card"><span class="tag">Presentation 02</span><h3>Progress presentation 1</h3><p>Initial implementation progress and component architecture.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/progress-presentation-1.txt">Replace slide file</a></p></article>
+          <article class="card"><span class="tag">Presentation 03</span><h3>Progress presentation 2</h3><p>Adaptive reminder pipeline, audit scenarios, and prototype evidence.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/progress-presentation-2.txt">Replace slide file</a></p></article>
+          <article class="card"><span class="tag">Final</span><h3>Final presentation</h3><p>Final contribution, results, limitations, and future work.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/final-presentation.txt">Replace slide file</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="about">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">07 / About us</div><h2>The people behind the project.</h2><p>The group combines content intelligence, grounded tutoring, affective computing, and adaptive learning research.</p></div>
+        <div class="grid-3" data-reveal>
+          <article class="card person"><span class="initials">TV</span><div><h3>T.G.K.G. Vijithapala</h3><p>Lecture summarisation.</p><p>IT22187178</p></div></article>
+          <article class="card person"><span class="initials">SD</span><div><h3>I.H. Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p></div></article>
+          <article class="card person"><span class="initials">KM</span><div><h3>K.K.G.Y. Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p></div></article>
+          <article class="card person"><span class="initials">HT</span><div><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell grid-2">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">08 / Contact us</div><h2>Questions about the research?</h2><p>Use the general project contact details required by the website guideline. The form is a static demonstration and does not transmit data.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:project-team@example.com">project-team@example.com</a></p></div></div>
+        <form class="card contact-form" data-reveal action="mailto:project-team@example.com" method="post" enctype="text/plain">
+          <h3>General email template</h3>
+          <label for="name">Your name</label><input id="name" name="name" type="text" required>
+          <label for="email">Email address</label><input id="email" name="email" type="email" required>
+          <label for="message">Message</label><textarea id="message" name="message" required></textarea>
+          <button class="button button-primary" type="submit">Open email template</button>
+          <p class="form-message">Replace the placeholder project email with the approved group contact before submission.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><span>&copy; 2026 AuraLearn / R26-SE-022</span><a href="#home">Back to top</a></div></footer>
+
+</body>
+</html>
