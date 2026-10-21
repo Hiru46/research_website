@@ -140,6 +140,11 @@
     .evidence-card-content p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
     .person { display: flex; gap: 15px; align-items: center; }
     .person-photo { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--mint); }
+    .person-copy { min-width: 0; max-height: 190px; overflow: hidden; padding-right: 4px; }
+    .person:hover .person-copy, .person:focus-within .person-copy { overflow-y: auto; }
+    .person-methodology { margin-top: 10px !important; line-height: 1.5; }
+    .scroll-card { max-height: 230px; overflow: hidden; }
+    .scroll-card:hover, .scroll-card:focus-within { overflow-y: auto; }
     .person p { margin: 2px 0 0; font-size: 13px; }
     .contact-links { display: flex; flex-wrap: wrap; gap: 7px 12px; margin-top: 9px; font-size: 12px; }
     .contact-links a { color: var(--teal); font-weight: 700; text-decoration: none; }
@@ -151,6 +156,9 @@
     .supervisor-card h4 { margin: 0; font-size: 18px; }
     .supervisor-card p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
     .supervisor-mark { width: 52px; height: 52px; display: grid; place-items: center; flex: 0 0 52px; border-radius: 50%; background: var(--mint); color: var(--teal-dark); font-weight: 700; }
+    .supervisor-photo { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--mint); }
+    .references-list { margin: 0; padding-left: 24px; color: var(--muted); }
+    .references-list li { margin-bottom: 10px; padding-left: 5px; }
     .contact-form { display: grid; gap: 13px; }
     label { font-size: 13px; font-weight: 700; }
     input, textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); font: inherit; }
@@ -203,6 +211,7 @@
         <a href="#documents">Documents</a>
         <a href="#presentations">Slides</a>
         <a href="#evidence">Evidence</a>
+        <a href="#references">References</a>
         <a href="#about">About us</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -239,11 +248,11 @@
           <p>AuraLearn addresses the fragmented study workflow by connecting content processing, grounded assistance, emotion and attention signals, and adaptive revision support in one research prototype.</p>
         </div>
         <div class="grid-2">
-          <article class="card accent-card" data-reveal><span class="tag">Literature survey</span><h3>Intelligent learning support</h3><p>The project brings together educational summarisation, retrieval-augmented generation, affective computing, and spaced repetition to support the learner across a study cycle.</p></article>
-          <article class="card" data-reveal><span class="tag">Research gap</span><h3>Tools are often disconnected</h3><p>Summaries, tutors, emotion-aware interfaces, and revision reminders are commonly treated as separate tools. AuraLearn investigates how their outputs can inform one another.</p></article>
-          <article class="card" data-reveal><span class="tag">Research problem</span><h3>How can study support adapt?</h3><p>The project investigates how learning content, questions, learner state, and review history can be combined to deliver more relevant and timely academic assistance.</p></article>
-          <article class="card" data-reveal><span class="tag">Objectives</span><h3>Support the complete study loop</h3><ul><li>Convert lecture materials into structured study resources.</li><li>Answer questions using retrieved source knowledge.</li><li>Recognise emotion and attention-related signals.</li><li>Personalise reminders and revision activities.</li></ul></article>
-          <article class="card" data-reveal><span class="tag">Technologies used</span><h3>Full-stack research prototype</h3><p>Next.js and HTML/CSS provide the interfaces; FastAPI and Python services provide APIs; MongoDB stores application state; transformer models, Sentence-BERT, FAISS, MediaPipe, Random Forest, and SM-2 support the research modules.</p></article>
+          <article class="card accent-card scroll-card" data-reveal><span class="tag">Literature survey</span><h3>Intelligent learning support</h3><p>The project brings together educational summarisation, retrieval-augmented generation, affective computing, and spaced repetition to support the learner across a study cycle.</p><p style="margin-top:14px;">The research also draws on work in machine emotional intelligence, grounded LLM tutoring, eye-tracking engagement detection, deep knowledge tracing, cognitive load, and personalised learning reminders.</p></article>
+          <article class="card scroll-card" data-reveal><span class="tag">Research gap</span><h3>Tools are often disconnected</h3><p>Summaries, tutors, emotion-aware interfaces, and revision reminders are commonly treated as separate tools. AuraLearn investigates how their outputs can inform one another.</p><p style="margin-top:14px;">The integrated design connects retrieved knowledge, learning objectives, affective state, mastery, and review history instead of treating each capability as an isolated application.</p></article>
+          <article class="card scroll-card" data-reveal><span class="tag">Research problem</span><h3>How can study support adapt?</h3><p>The project investigates how learning content, questions, learner state, and review history can be combined to deliver more relevant and timely academic assistance.</p><p style="margin-top:14px;">The methodology follows Design Science Research: identify the problem, design the artifact, implement the four components, and evaluate their technical, operational, and educational value.</p></article>
+          <article class="card scroll-card" data-reveal><span class="tag">Objectives</span><h3>Support the complete study loop</h3><ul><li>Convert lecture materials into structured study resources.</li><li>Answer questions using retrieved source knowledge.</li><li>Recognise emotion and attention-related signals.</li><li>Personalise reminders and revision activities.</li></ul><p style="margin-top:14px;">The outputs are designed to flow from content preparation to grounded understanding, readiness-aware study support, and adaptive revision.</p></article>
+          <article class="card scroll-card" data-reveal><span class="tag">Technologies used</span><h3>Full-stack research prototype</h3><p>Next.js and HTML/CSS provide the interfaces; FastAPI and Python services provide APIs; MongoDB stores application state; transformer models, Sentence-BERT, FAISS, MediaPipe, Random Forest, and SM-2 support the research modules.</p><p style="margin-top:14px;">The draft architecture also describes OCR, Whisper transcription, BART/T5, MobileNetV2, Redis, Docker, REST services, and contextual bandit scheduling.</p></article>
         </div>
       </div>
     </section>
@@ -451,31 +460,57 @@
 
     <section class="alt" id="about">
       <div class="shell">
-        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">08 / About us</div><h2>The people behind the project.</h2><p>The group combines content intelligence, grounded tutoring, affective computing, and adaptive learning research.</p></div>
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">09 / About us</div><h2>The people behind the project.</h2><p>The group combines content intelligence, grounded tutoring, affective computing, and adaptive learning research.</p></div>
         <div class="grid-3" data-reveal>
-          <article class="card person"><img class="person-photo" src="assets/Consultant.jpeg" alt="Project consultant"><div><h3>Project Consultant</h3><p>Research guidance and academic supervision.</p><div class="contact-links"><a href="tel:0702118864">070 211 8864</a><a href="mailto:mindcarecounselling8@gmail.com">Email</a></div></div></article>
-          <article class="card person"><img class="person-photo" src="assets/kavindu%20gayashan.jpeg" alt="Kavindu Gayashan"><div><h3>Kavindu Gayashan</h3><p>Lecture summarisation.</p><p>IT22187178</p><div class="contact-links"><a href="mailto:it22187178@my.sliit.lk">Email</a><a href="tel:0715503670">071 550 3670</a><a href="https://www.linkedin.com/in/kavindu-gayashan-8303a2250?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
-          <article class="card person"><img class="person-photo" src="assets/Sonal%20Dilmith.jpeg" alt="Sonal Dilmith"><div><h3>Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p><div class="contact-links"><a href="mailto:it22120120@my.sliit.lk">Email</a><a href="tel:0783332858">078 333 2858</a><a href="https://www.linkedin.com/in/sonal-dilmith-3a736825a?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
-          <article class="card person"><img class="person-photo" src="assets/Yasas%20Mihiraj.jpeg" alt="Yasas Mihiraj"><div><h3>Yasas Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p><div class="contact-links"><a href="mailto:it22224552@my.sliit.lk">Email</a><a href="tel:0779921510">077 992 1510</a><a href="https://www.linkedin.com/in/yasasmihiraj?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
-          <article class="card person"><img class="person-photo" src="assets/Hiran%20Thathsara.jpeg" alt="Hiran Thathsara"><div><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p><div class="contact-links"><a href="mailto:it22371690@my.sliit.lk">Email</a><a href="tel:0719243296">071 924 3296</a><a href="https://www.linkedin.com/in/hiran-thathsara-64512a220/" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/kavindu%20gayashan.jpeg" alt="Kavindu Gayashan"><div class="person-copy"><h3>Kavindu Gayashan</h3><p>Lecture summarisation.</p><p>IT22187178</p><p class="person-methodology"><strong>Methodology:</strong> Ingests PDF, DOCX, and Whisper transcripts; applies OCR and slide/transcript alignment; maps content to learning objectives and Bloom's levels; fine-tunes BART/T5 summaries; and generates filtered, difficulty-rated active-recall flashcards.</p><div class="contact-links"><a href="mailto:it22187178@my.sliit.lk">Email</a><a href="tel:0715503670">071 550 3670</a><a href="https://www.linkedin.com/in/kavindu-gayashan-8303a2250?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Sonal%20Dilmith.jpeg" alt="Sonal Dilmith"><div class="person-copy"><h3>Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p><p class="person-methodology"><strong>Methodology:</strong> Uses recursive chunking with 512-token segments and 64-token overlap, semantic embeddings, FAISS top-five retrieval, and a confidence score combining retrieval similarity with token log-probabilities. High-, medium-, and low-confidence answers are routed to direct citation, Socratic guidance, or safe refusal.</p><div class="contact-links"><a href="mailto:it22120120@my.sliit.lk">Email</a><a href="tel:0783332858">078 333 2858</a><a href="https://www.linkedin.com/in/sonal-dilmith-3a736825a?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Yasas%20Mihiraj.jpeg" alt="Yasas Mihiraj"><div class="person-copy"><h3>Yasas Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p><p class="person-methodology"><strong>Methodology:</strong> Processes periodic webcam frames locally with MediaPipe's 468-point face mesh. Eye, mouth, brow, and head-pose ratios are fused with MobileNetV2 features to classify five affective states and estimate attention. Raw frames are processed in volatile memory and discarded to enforce a zero-storage privacy protocol.</p><div class="contact-links"><a href="mailto:it22224552@my.sliit.lk">Email</a><a href="tel:0779921510">077 992 1510</a><a href="https://www.linkedin.com/in/yasasmihiraj?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Hiran%20Thathsara.jpeg" alt="Hiran Thathsara"><div class="person-copy"><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p><p class="person-methodology"><strong>Methodology:</strong> Extends SM-2 with an Affective Readiness Index combining attention, fatigue, and mood, then adjusts review intervals with a fatigue penalty. A contextual bandit uses readiness, mastery, session duration, adherence, and time of day to choose review, break, difficulty, or rescheduling actions.</p><div class="contact-links"><a href="mailto:it22371690@my.sliit.lk">Email</a><a href="tel:0719243296">071 924 3296</a><a href="https://www.linkedin.com/in/hiran-thathsara-64512a220/" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+        </div>
+        <div class="people-group" data-reveal>
+          <h3>Evaluation and evidence</h3>
+          <article class="card person"><img class="person-photo" src="assets/Consultant.jpeg" alt="Project consultant and evaluator"><div><h3>Project Consultant</h3><p>External evaluation and assessment evidence.</p><div class="contact-links"><a href="tel:0702118864">070 211 8864</a><a href="mailto:mindcarecounselling8@gmail.com">Email</a></div></div></article>
         </div>
         <div class="people-group" data-reveal>
           <h3>Supervisors</h3>
           <div class="supervisor-grid">
-            <article class="card supervisor-card"><span class="supervisor-mark">SK</span><div><h4>Suriya Kumari</h4><p>Project supervisor</p><div class="contact-links"><a href="mailto:Suriyaa.k@sliit.lk">Email</a><a href="https://www.linkedin.com/in/suriyaa-kumari-9a456113b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
-            <article class="card supervisor-card"><span class="supervisor-mark">RS</span><div><h4>Ravi Supunya</h4><p>Project supervisor</p><div class="contact-links"><a href="mailto:Ravi.s@sliit.lk">Email</a><a href="https://www.linkedin.com/in/ravi-supunya-2b2774ab?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+            <article class="card supervisor-card"><img class="supervisor-photo" src="assets/Ms.%20Suriyaa%20Kumari.jpeg" alt="Ms. Suriyaa Kumari"><div><h4>Suriyaa Kumari</h4><p>Project supervisor</p><div class="contact-links"><a href="mailto:Suriyaa.k@sliit.lk">Email</a><a href="https://www.linkedin.com/in/suriyaa-kumari-9a456113b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+            <article class="card supervisor-card"><img class="supervisor-photo" src="assets/Mr.%20Ravi%20Supunya.jpeg" alt="Mr. Ravi Supunya"><div><h4>Ravi Supunya</h4><p>Co-supervisor</p><div class="contact-links"><a href="mailto:Ravi.s@sliit.lk">Email</a><a href="https://www.linkedin.com/in/ravi-supunya-2b2774ab?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
           </div>
         </div>
       </div>
     </section>
 
+    <section id="references">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">10 / References</div><h2>Research foundations.</h2><p>Key academic and technical sources that inform the AuraLearn research project.</p></div>
+        <ol class="references-list" data-reveal>
+          <li>D. Kar, L. B&ouml;ss, D. Braca, S. Dennerlein, and N. Hubig, &ldquo;MathBuddy: A multimodal system for affective math tutoring,&rdquo; arXiv:2508.19993, Aug. 2025.</li>
+          <li>R. W. Picard, E. Vyzas, and J. Healey, &ldquo;Toward machine emotional intelligence: Analysis of affective physiological state,&rdquo; IEEE Trans. Pattern Anal. Mach. Intell., vol. 23, no. 10, pp. 1175&ndash;1191, Oct. 2001.</li>
+          <li>Z. Liu, P. Agrawal, S. Singhal, V. Madaan, and M. Kumar, &ldquo;LPITutor: An LLM based personalized intelligent tutoring system using RAG and prompt engineering,&rdquo; PeerJ Comput. Sci., vol. 11, Aug. 2025.</li>
+          <li>Z. Jiang and M. Jiang, &ldquo;Beyond answers: Large language model-powered tutoring system in physics education for deep learning and precise understanding,&rdquo; arXiv:2406.10934, 2024.</li>
+          <li>P. Wozniak, &ldquo;SuperMemo 2: A modified version of the SuperMemo algorithm for scheduling repetition,&rdquo; SuperMemo World, 1990.</li>
+          <li>A. O. R. Vistorte, L. S. B. Ribeiro, M. A. S. Netto, and F. S. Os&oacute;rio, &ldquo;Integrating artificial intelligence to assess emotions in learning environments: A systematic review,&rdquo; Artif. Intell. Rev., vol. 57, no. 4, pp. 1&ndash;32, 2024.</li>
+          <li>N. P. Subheesh, M. B. Nair, and K. S. Kumar, &ldquo;System for emotion and engagement recognition in education (SEERE),&rdquo; in Proc. IEEE Frontiers in Education Conf. (FIE), 2024, pp. 1&ndash;8.</li>
+          <li>S. Vishnumolakala, R. S. Rao, and A. K. Singh, &ldquo;Eye-tracking based student engagement detection in online learning environments,&rdquo; IEEE Access, vol. 11, pp. 56421&ndash;56434, 2023.</li>
+          <li>C. Piech et al., &ldquo;Deep knowledge tracing,&rdquo; in Advances in Neural Information Processing Systems, vol. 28, 2015, pp. 505&ndash;513.</li>
+          <li>S. Chaudhry et al., &ldquo;Personalized reminder systems in mobile learning: A systematic review,&rdquo; Comput. Educ., vol. 156, 2020, Art. no. 103963.</li>
+          <li>A. Singh, A. Singh, and H. Kumar, &ldquo;Natural language processing and its impact on academics and on student&rsquo;s efficiency and effectiveness,&rdquo; in Proc. Int. Conf. Circuit, Systems and Communication (ICCSC), Fez, Morocco, Jun. 2025, pp. 1&ndash;5.</li>
+          <li>M. Sindhu, Sarita, Y. Y. Raghav, and K. Kundu, &ldquo;Generative AI in education and its future possibilities,&rdquo; in Proc. Int. Conf. Intelligent and Secure Engineering Solutions (CISES), Greater Noida, India, Aug. 2025, pp. 68&ndash;74.</li>
+          <li>A. Aher, R. Sawant, R. Patil, S. Sabat, and T. Panchal, &ldquo;Mindscape: An AI-powered study companion integrating natural language processing algorithms,&rdquo; in Proc. 3rd Int. Conf. Communication, Security, and Artificial Intelligence (ICCSAI), Greater Noida, India, Apr. 2025, pp. 2116&ndash;2121.</li>
+          <li>A. Vaswani et al., &ldquo;Attention is all you need,&rdquo; in Advances in Neural Information Processing Systems, vol. 30, 2017, pp. 5998&ndash;6008.</li>
+          <li>J. Sweller, &ldquo;Cognitive load during problem solving: Effects on learning,&rdquo; Cogn. Sci., vol. 12, no. 2, pp. 257&ndash;285, 1988.</li>
+        </ol>
+      </div>
+    </section>
+
     <section id="contact">
       <div class="shell grid-2">
-        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">09 / Contact us</div><h2>Questions about the research?</h2><p>Use the direct email button to open a pre-addressed message in your default mail application.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:mindcarecounselling8@gmail.com">mindcarecounselling8@gmail.com</a></p></div></div>
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">11 / Contact us</div><h2>Questions about the research?</h2><p>Use the direct email button to open a pre-addressed message in your default mail application.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:mihirajyasas@gmail.com">mihirajyasas@gmail.com</a></p></div></div>
         <div class="card contact-form" data-reveal>
           <h3>Send us an email</h3>
-          <p>Click once to open a new email addressed to the project consultant.</p>
-          <a class="button button-primary" href="mailto:mindcarecounselling8@gmail.com?subject=AuraLearn%20research%20project%20enquiry&body=Hello%20AuraLearn%20team%2C%0A%0AI%20would%20like%20to%20ask%20about%20the%20AuraLearn%20research%20project.%0A%0ARegards%2C">Send email</a>
+          <p>Click once to open a new email addressed to the project team.</p>
+          <a class="button button-primary" href="mailto:mihirajyasas@gmail.com?subject=AuraLearn%20research%20project%20enquiry&body=Hello%20AuraLearn%20team%2C%0A%0AI%20would%20like%20to%20ask%20about%20the%20AuraLearn%20research%20project.%0A%0ARegards%2C">Send email</a>
           <p class="form-message">This uses your device's default email application. You can review the message and click Send.</p>
         </div>
       </div>
