@@ -97,7 +97,7 @@
     td { color: var(--muted); font-size: 14px; }
     tr:last-child td { border-bottom: 0; }
     td strong { color: var(--ink); }
-    .status { display: inline-block; padding: 4px 8px; border-radius: 99px; background: var(--mint); color: var(--teal-dark); font-size: 12px; font-weight: 700; }
+    .status { display: inline-block; padding: 4px 8px; border-radius: 99px; background: var(--mint); color: var(--teal-dark); font-size: 12px; font-weight: 700; text-decoration: none; }
     .status.pending { background: #fff2ce; color: #795c00; }
 
     .component-banner { display: grid; grid-template-columns: .7fr 1.3fr; gap: 24px; align-items: center; padding: 30px; border-radius: var(--radius); background: var(--coral); color: var(--white); }
@@ -111,6 +111,27 @@
     .doc strong { display: block; }
     .doc span { color: var(--muted); font-size: 13px; }
     .doc-arrow { color: var(--coral); font-size: 22px; }
+
+    /* Collapsible group doc cards */
+    .doc-group { border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); overflow: hidden; }
+    .doc-group-toggle { display: none; }
+    .doc-group-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; cursor: pointer; user-select: none; border-bottom: 1px solid transparent; transition: background .15s; }
+    .doc-group-header:hover { background: var(--paper); }
+    .doc-group-toggle:checked ~ .doc-group-header { border-bottom-color: var(--line); }
+    .doc-group-header strong { font-size: 15px; color: var(--ink); }
+    .doc-group-header small { color: var(--muted); font-size: 13px; margin-top: 2px; display: block; }
+    .doc-group-chevron { color: var(--coral); font-size: 18px; transition: transform .25s; }
+    .doc-group-toggle:checked ~ .doc-group-header .doc-group-chevron { transform: rotate(180deg); }
+    .doc-group-body { display: none; }
+    .doc-group-toggle:checked ~ .doc-group-body { display: block; }
+    .doc-file-row { display: flex; align-items: center; gap: 14px; padding: 13px 20px; border-top: 1px solid var(--line); text-decoration: none; color: inherit; transition: background .15s; }
+    .doc-file-row:first-child { border-top: 0; }
+    .doc-file-row:hover { background: var(--paper); }
+    .doc-file-icon { flex: 0 0 32px; width: 32px; height: 32px; display: grid; place-items: center; background: #fee2dc; border-radius: 7px; color: var(--coral); font-size: 14px; font-weight: 900; }
+    .doc-file-name { flex: 1; font-size: 14px; font-weight: 600; color: var(--ink); }
+    .doc-file-sub { font-size: 12px; color: var(--muted); font-weight: 400; display: block; }
+    .doc-dl-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 7px; background: var(--teal); color: var(--white); font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .doc-dl-btn:hover { background: var(--teal-dark); }
     .person { display: flex; gap: 15px; align-items: center; }
     .initials { width: 50px; height: 50px; display: grid; place-items: center; flex: 0 0 50px; border-radius: 50%; background: var(--teal); color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
     .person p { margin: 2px 0 0; font-size: 13px; }
@@ -251,11 +272,15 @@
         <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">04 / Milestones</div><h2>Assessment trail.</h2><p>Use this section to present the complete project journey from proposal to final demonstration. Dates and marks are intentionally shown as confirmation fields rather than invented results.</p></div>
         <div class="table-wrap" data-reveal>
           <table><thead><tr><th>Assessment</th><th>Evidence</th><th>Date</th><th>Marks</th><th>Status</th></tr></thead><tbody>
-            <tr><td><strong>Project Proposal</strong></td><td>Problem definition, objectives, literature survey, and initial methodology.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">Completed / update</span></td></tr>
-            <tr><td><strong>Progress Presentation 1</strong></td><td>Early research progress, system concept, and component responsibilities.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">Add evidence</span></td></tr>
-            <tr><td><strong>Progress Presentation 2</strong></td><td>Prototype demonstration and reminder pipeline audit scenarios.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">Prototype evidence</span></td></tr>
-            <tr><td><strong>Final Assessment</strong></td><td>Final report, integrated system, evaluation, and presentation.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">Upcoming</span></td></tr>
-            <tr><td><strong>Viva</strong></td><td>Individual explanations of all project components and each member's contribution.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">Upcoming</span></td></tr>
+            <tr><td><strong>Project Charter</strong></td><td>Scope, objectives, team roles, and project governance document.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Project Proposal</strong></td><td>Problem definition, objectives, literature survey, and initial methodology. Four individual proposals submitted.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Proposal Presentation</strong></td><td>Research context, problem statement, objectives, and proposed solution presented to supervisors.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Progress Presentation 1</strong></td><td>Early research progress, system concept, and component responsibilities demonstrated.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Progress Presentation 2</strong></td><td>Prototype demonstration, adaptive reminder pipeline audit scenarios, and evaluation results.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Draft Thesis Submission</strong></td><td>Individual draft theses and group draft thesis submitted for review. Five PDFs uploaded.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Final Presentation</strong></td><td>Final contribution, integrated system demonstration, evaluation summary, and future work.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status">&#10003; Completed</span></td></tr>
+            <tr><td><strong>Research Paper Submission</strong></td><td>Peer-reviewed paper documenting the research findings and system contributions.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">&#9679; Upcoming</span></td></tr>
+            <tr><td><strong>Viva</strong></td><td>Individual explanations of all project components and each member's contribution.</td><td>To be confirmed</td><td>Refer to official rubric</td><td><span class="status pending">&#9679; Upcoming</span></td></tr>
           </tbody></table>
         </div>
       </div>
@@ -263,16 +288,76 @@
 
     <section class="alt" id="documents">
       <div class="shell">
-        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">05 / Documents</div><h2>Project record.</h2><p>Links below point to files already present in the project workspace. Add the remaining approved documents before uploading the website source.</p></div>
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">05 / Documents</div><h2>Project record.</h2><p>All available project documents. Click a group to expand and download individual files.</p></div>
         <div class="doc-list" data-reveal>
-          <a class="doc" href="documents/research-proposal.docx"><span><strong>Research proposal</strong><span>Project proposal document</span></span><span class="doc-arrow">&#8599;</span></a>
-          <a class="doc" href="documents/project-readme.md"><span><strong>Project README</strong><span>Repository overview and setup information</span></span><span class="doc-arrow">&#8599;</span></a>
-          <a class="doc" href="documents/backend-readme.md"><span><strong>Backend documentation</strong><span>API, architecture, testing, and deployment notes</span></span><span class="doc-arrow">&#8599;</span></a>
-          <a class="doc" href="documents/reminder-audit-tests.py"><span><strong>Reminder audit tests</strong><span>Executable scenarios for the adaptive pipeline</span></span><span class="doc-arrow">&#8599;</span></a>
-          <a class="doc" href="documents/evaluation-readme.md"><span><strong>Evaluation framework</strong><span>Metrics, baselines, and research evaluation structure</span></span><span class="doc-arrow">&#8599;</span></a>
-          <a class="doc" href="documents/project-charter.txt"><span><strong>Project Charter</strong><span>Local submission slot for the approved project charter.</span></span><span class="status pending">Replace file</span></a>
-          <a class="doc" href="documents/checklist-documents.txt"><span><strong>Checklist documents</strong><span>Local submission slot for the approved checklist files.</span></span><span class="status pending">Replace file</span></a>
-          <a class="doc" href="documents/final-document-set.txt"><span><strong>Final document set</strong><span>Local submission slot for the approved final documents.</span></span><span class="status pending">Replace file</span></a>
+
+          <!-- Project Proposals group -->
+          <div class="doc-group">
+            <input class="doc-group-toggle" type="checkbox" id="grp-proposals">
+            <label class="doc-group-header" for="grp-proposals">
+              <span><strong>Project Proposals</strong><small>4 individual proposals &mdash; PDF</small></span>
+              <span class="doc-group-chevron">&#8964;</span>
+            </label>
+            <div class="doc-group-body">
+              <a class="doc-file-row" href="documents/Project proposals/IT22120120-Hallucination- Controlled LLM-Based Tutor.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">I.H. Sonal Dilmith<span class="doc-file-sub">Hallucination-Controlled LLM-Based Tutor &mdash; IT22120120</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Project proposals/IT22187178-Aware Lecture Summarization and Flashcard Generation for Intelligent Study Assistants.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">T.G.K.G. Vijithapala<span class="doc-file-sub">Aware Lecture Summarization and Flashcard Generation &mdash; IT22187178</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Project proposals/IT22224552- Affect and Attention-Aware Emotion Detection Module.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">K.K.G.Y. Mihiraj<span class="doc-file-sub">Affect and Attention-Aware Emotion Detection Module &mdash; IT22224552</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Project proposals/IT22371690_Emotion and Progress-Aware Adaptive Study Reminder System.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">Hiran Thathsara<span class="doc-file-sub">Emotion and Progress-Aware Adaptive Study Reminder System &mdash; IT22371690</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Draft Theses group -->
+          <div class="doc-group">
+            <input class="doc-group-toggle" type="checkbox" id="grp-theses">
+            <label class="doc-group-header" for="grp-theses">
+              <span><strong>Draft Theses</strong><small>4 individual drafts + 1 group draft &mdash; PDF</small></span>
+              <span class="doc-group-chevron">&#8964;</span>
+            </label>
+            <div class="doc-group-body">
+              <a class="doc-file-row" href="documents/Draft thesis/R26-SE-022_DRAFT.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">Group Draft Thesis<span class="doc-file-sub">R26-SE-022 &mdash; AuraLearn Research Group</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Draft thesis/IT22120120_DRAFT.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">I.H. Sonal Dilmith<span class="doc-file-sub">Individual Draft Thesis &mdash; IT22120120</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Draft thesis/IT22187178_DRAFT.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">T.G.K.G. Vijithapala<span class="doc-file-sub">Individual Draft Thesis &mdash; IT22187178</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Draft thesis/IT22224552_DRAFT.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">K.K.G.Y. Mihiraj<span class="doc-file-sub">Individual Draft Thesis &mdash; IT22224552</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+              <a class="doc-file-row" href="documents/Draft thesis/IT22371690_DRAFT.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">Hiran Thathsara<span class="doc-file-sub">Individual Draft Thesis &mdash; IT22371690</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -281,10 +366,10 @@
       <div class="shell">
         <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">06 / Presentations</div><h2>Slides used to tell the story.</h2><p>Keep this area ready for every presentation stage. Only link files that have been approved for public viewing.</p></div>
         <div class="grid-3" data-reveal>
-          <article class="card"><span class="tag">Presentation 01</span><h3>Proposal presentation</h3><p>Research context, problem, objectives, and proposed solution.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/proposal-presentation.txt">Replace slide file</a></p></article>
-          <article class="card"><span class="tag">Presentation 02</span><h3>Progress presentation 1</h3><p>Initial implementation progress and component architecture.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/progress-presentation-1.txt">Replace slide file</a></p></article>
-          <article class="card"><span class="tag">Presentation 03</span><h3>Progress presentation 2</h3><p>Adaptive reminder pipeline, audit scenarios, and prototype evidence.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/progress-presentation-2.txt">Replace slide file</a></p></article>
-          <article class="card"><span class="tag">Final</span><h3>Final presentation</h3><p>Final contribution, results, limitations, and future work.</p><p style="margin-top:14px;"><a class="status pending" href="presentations/final-presentation.txt">Replace slide file</a></p></article>
+          <article class="card"><span class="tag">Presentation 01</span><h3>Proposal presentation</h3><p>Research context, problem, objectives, and proposed solution.</p><p style="margin-top:14px;"><a class="status" href="presentations/Proposal-presentation.pptx" download>Download slides (.pptx)</a></p></article>
+          <article class="card"><span class="tag">Presentation 02</span><h3>Progress presentation 1</h3><p>Initial implementation progress and component architecture.</p><p style="margin-top:14px;"><a class="status" href="presentations/progress-presentation-1.pptx" download>Download slides (.pptx)</a></p></article>
+          <article class="card"><span class="tag">Presentation 03</span><h3>Progress presentation 2</h3><p>Adaptive reminder pipeline, audit scenarios, and prototype evidence.</p><p style="margin-top:14px;"><a class="status" href="presentations/Progress-presentation-2.pptx" download>Download slides (.pptx)</a></p></article>
+          <article class="card"><span class="tag">Final</span><h3>Final presentation</h3><p>Final contribution, results, limitations, and future work.</p><p style="margin-top:14px;"><a class="status" href="presentations/final-presentation.pptx" download>Download slides (.pptx)</a></p></article>
         </div>
       </div>
     </section>
