@@ -141,6 +141,16 @@
     .person { display: flex; gap: 15px; align-items: center; }
     .person-photo { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--mint); }
     .person p { margin: 2px 0 0; font-size: 13px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 7px 12px; margin-top: 9px; font-size: 12px; }
+    .contact-links a { color: var(--teal); font-weight: 700; text-decoration: none; }
+    .contact-links a:hover, .contact-links a:focus { color: var(--coral); text-decoration: underline; }
+    .people-group { margin-top: 32px; }
+    .people-group h3 { margin: 0 0 14px; color: var(--teal-dark); font-size: 22px; }
+    .supervisor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .supervisor-card { display: flex; gap: 15px; align-items: center; }
+    .supervisor-card h4 { margin: 0; font-size: 18px; }
+    .supervisor-card p { margin: 3px 0 0; color: var(--muted); font-size: 13px; }
+    .supervisor-mark { width: 52px; height: 52px; display: grid; place-items: center; flex: 0 0 52px; border-radius: 50%; background: var(--mint); color: var(--teal-dark); font-weight: 700; }
     .contact-form { display: grid; gap: 13px; }
     label { font-size: 13px; font-weight: 700; }
     input, textarea { width: 100%; padding: 12px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); font: inherit; }
@@ -158,6 +168,7 @@
       .flow { grid-template-columns: repeat(2, 1fr); }
       .flow-step:not(:last-child):after { display: none; }
       .evidence-grid { grid-template-columns: 1fr; }
+      .supervisor-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       .shell { width: min(var(--max), calc(100% - 28px)); }
@@ -366,6 +377,38 @@
             </div>
           </div>
 
+          <!-- Checklist group -->
+          <div class="doc-group">
+            <input class="doc-group-toggle" type="checkbox" id="grp-checklist">
+            <label class="doc-group-header" for="grp-checklist">
+              <span><strong>Checklist Documents</strong><small>Project submission checklist &mdash; TXT</small></span>
+              <span class="doc-group-chevron">&#8964;</span>
+            </label>
+            <div class="doc-group-body">
+              <a class="doc-file-row" href="documents/checklist-documents.txt" download>
+                <span class="doc-file-icon">TXT</span>
+                <span class="doc-file-name">Project checklist<span class="doc-file-sub">Checklist documents and submission evidence inventory</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- TAF group -->
+          <div class="doc-group">
+            <input class="doc-group-toggle" type="checkbox" id="grp-taf">
+            <label class="doc-group-header" for="grp-taf">
+              <span><strong>TAF Documents</strong><small>Team assessment form &mdash; PDF</small></span>
+              <span class="doc-group-chevron">&#8964;</span>
+            </label>
+            <div class="doc-group-body">
+              <a class="doc-file-row" href="documents/TAF/TAF-R26-SE-022.pdf" download>
+                <span class="doc-file-icon">PDF</span>
+                <span class="doc-file-name">TAF &mdash; R26-SE-022<span class="doc-file-sub">Team assessment form for the AuraLearn research project</span></span>
+                <span class="doc-dl-btn">&#8595; Download</span>
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -410,26 +453,31 @@
       <div class="shell">
         <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">08 / About us</div><h2>The people behind the project.</h2><p>The group combines content intelligence, grounded tutoring, affective computing, and adaptive learning research.</p></div>
         <div class="grid-3" data-reveal>
-          <article class="card person"><img class="person-photo" src="assets/Consultant.jpeg" alt="Project consultant"><div><h3>Project Consultant</h3><p>Research guidance and academic supervision.</p></div></article>
-          <article class="card person"><img class="person-photo" src="assets/kavindu%20gayashan.jpeg" alt="T.G.K.G. Vijithapala"><div><h3>T.G.K.G. Vijithapala</h3><p>Lecture summarisation.</p><p>IT22187178</p></div></article>
-          <article class="card person"><img class="person-photo" src="assets/Sonal%20Dilmith.jpeg" alt="I.H. Sonal Dilmith"><div><h3>I.H. Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p></div></article>
-          <article class="card person"><img class="person-photo" src="assets/Yasas%20Mihiraj.jpeg" alt="K.K.G.Y. Mihiraj"><div><h3>K.K.G.Y. Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p></div></article>
-          <article class="card person"><img class="person-photo" src="assets/Hiran%20Thathsara.jpeg" alt="Hiran Thathsara"><div><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Consultant.jpeg" alt="Project consultant"><div><h3>Project Consultant</h3><p>Research guidance and academic supervision.</p><div class="contact-links"><a href="tel:0702118864">070 211 8864</a><a href="mailto:mindcarecounselling8@gmail.com">Email</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/kavindu%20gayashan.jpeg" alt="Kavindu Gayashan"><div><h3>Kavindu Gayashan</h3><p>Lecture summarisation.</p><p>IT22187178</p><div class="contact-links"><a href="mailto:it22187178@my.sliit.lk">Email</a><a href="tel:0715503670">071 550 3670</a><a href="https://www.linkedin.com/in/kavindu-gayashan-8303a2250?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Sonal%20Dilmith.jpeg" alt="Sonal Dilmith"><div><h3>Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p><div class="contact-links"><a href="mailto:it22120120@my.sliit.lk">Email</a><a href="tel:0783332858">078 333 2858</a><a href="https://www.linkedin.com/in/sonal-dilmith-3a736825a?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Yasas%20Mihiraj.jpeg" alt="Yasas Mihiraj"><div><h3>Yasas Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p><div class="contact-links"><a href="mailto:it22224552@my.sliit.lk">Email</a><a href="tel:0779921510">077 992 1510</a><a href="https://www.linkedin.com/in/yasasmihiraj?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Hiran%20Thathsara.jpeg" alt="Hiran Thathsara"><div><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p><div class="contact-links"><a href="mailto:it22371690@my.sliit.lk">Email</a><a href="tel:0719243296">071 924 3296</a><a href="https://www.linkedin.com/in/hiran-thathsara-64512a220/" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+        </div>
+        <div class="people-group" data-reveal>
+          <h3>Supervisors</h3>
+          <div class="supervisor-grid">
+            <article class="card supervisor-card"><span class="supervisor-mark">SK</span><div><h4>Suriya Kumari</h4><p>Project supervisor</p><div class="contact-links"><a href="mailto:Suriyaa.k@sliit.lk">Email</a><a href="https://www.linkedin.com/in/suriyaa-kumari-9a456113b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+            <article class="card supervisor-card"><span class="supervisor-mark">RS</span><div><h4>Ravi Supunya</h4><p>Project supervisor</p><div class="contact-links"><a href="mailto:Ravi.s@sliit.lk">Email</a><a href="https://www.linkedin.com/in/ravi-supunya-2b2774ab?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">LinkedIn</a></div></div></article>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="shell grid-2">
-        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">09 / Contact us</div><h2>Questions about the research?</h2><p>Use the general project contact details required by the website guideline. The form is a static demonstration and does not transmit data.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:project-team@example.com">project-team@example.com</a></p></div></div>
-        <form class="card contact-form" data-reveal action="mailto:project-team@example.com" method="post" enctype="text/plain">
-          <h3>General email template</h3>
-          <label for="name">Your name</label><input id="name" name="name" type="text" required>
-          <label for="email">Email address</label><input id="email" name="email" type="email" required>
-          <label for="message">Message</label><textarea id="message" name="message" required></textarea>
-          <button class="button button-primary" type="submit">Open email template</button>
-          <p class="form-message">Replace the placeholder project email with the approved group contact before submission.</p>
-        </form>
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">09 / Contact us</div><h2>Questions about the research?</h2><p>Use the direct email button to open a pre-addressed message in your default mail application.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:mindcarecounselling8@gmail.com">mindcarecounselling8@gmail.com</a></p></div></div>
+        <div class="card contact-form" data-reveal>
+          <h3>Send us an email</h3>
+          <p>Click once to open a new email addressed to the project consultant.</p>
+          <a class="button button-primary" href="mailto:mindcarecounselling8@gmail.com?subject=AuraLearn%20research%20project%20enquiry&body=Hello%20AuraLearn%20team%2C%0A%0AI%20would%20like%20to%20ask%20about%20the%20AuraLearn%20research%20project.%0A%0ARegards%2C">Send email</a>
+          <p class="form-message">This uses your device's default email application. You can review the message and click Send.</p>
+        </div>
       </div>
     </section>
   </main>
