@@ -132,8 +132,14 @@
     .doc-file-sub { font-size: 12px; color: var(--muted); font-weight: 400; display: block; }
     .doc-dl-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 7px; background: var(--teal); color: var(--white); font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
     .doc-dl-btn:hover { background: var(--teal-dark); }
+    .evidence-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .evidence-card { overflow: hidden; padding: 0; }
+    .evidence-card img { display: block; width: 100%; height: 260px; object-fit: cover; border-bottom: 1px solid var(--line); }
+    .evidence-card-content { padding: 20px; }
+    .evidence-card-content h3 { margin: 0 0 7px; font-size: 19px; }
+    .evidence-card-content p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
     .person { display: flex; gap: 15px; align-items: center; }
-    .initials { width: 50px; height: 50px; display: grid; place-items: center; flex: 0 0 50px; border-radius: 50%; background: var(--teal); color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+    .person-photo { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--mint); }
     .person p { margin: 2px 0 0; font-size: 13px; }
     .contact-form { display: grid; gap: 13px; }
     label { font-size: 13px; font-weight: 700; }
@@ -151,6 +157,7 @@
       .hero-grid, .component-banner { grid-template-columns: 1fr; gap: 32px; }
       .flow { grid-template-columns: repeat(2, 1fr); }
       .flow-step:not(:last-child):after { display: none; }
+      .evidence-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       .shell { width: min(var(--max), calc(100% - 28px)); }
@@ -184,6 +191,7 @@
         <a href="#milestones">Milestones</a>
         <a href="#documents">Documents</a>
         <a href="#presentations">Slides</a>
+        <a href="#evidence">Evidence</a>
         <a href="#about">About us</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -374,21 +382,46 @@
       </div>
     </section>
 
+    <section class="alt" id="evidence">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">07 / Evidence</div><h2>Panel comments and assessment evidence.</h2><p>Panel feedback from the progress presentations is included as supporting evidence of the project's review and development journey.</p></div>
+        <div class="evidence-grid" data-reveal>
+          <article class="card evidence-card">
+            <img src="Pannel%20Comment/Pannel%20Comment%20-%20PP1.jpeg" alt="Panel comments from Progress Presentation 1">
+            <div class="evidence-card-content">
+              <h3>Progress Presentation 1 panel comments</h3>
+              <p>Feedback recorded by the assessment panel during the first progress presentation.</p>
+              <a class="status" href="Pannel%20Comment/Pannel%20Comment%20-%20PP1.jpeg" download>Download evidence (.jpeg)</a>
+            </div>
+          </article>
+          <article class="card evidence-card">
+            <img src="Pannel%20Comment/Pannel%20Comment%20-%20PP2.jpeg" alt="Panel comments from Progress Presentation 2">
+            <div class="evidence-card-content">
+              <h3>Progress Presentation 2 panel comments</h3>
+              <p>Feedback recorded by the assessment panel during the second progress presentation.</p>
+              <a class="status" href="Pannel%20Comment/Pannel%20Comment%20-%20PP2.jpeg" download>Download evidence (.jpeg)</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="alt" id="about">
       <div class="shell">
-        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">07 / About us</div><h2>The people behind the project.</h2><p>The group combines content intelligence, grounded tutoring, affective computing, and adaptive learning research.</p></div>
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">08 / About us</div><h2>The people behind the project.</h2><p>The group combines content intelligence, grounded tutoring, affective computing, and adaptive learning research.</p></div>
         <div class="grid-3" data-reveal>
-          <article class="card person"><span class="initials">TV</span><div><h3>T.G.K.G. Vijithapala</h3><p>Lecture summarisation.</p><p>IT22187178</p></div></article>
-          <article class="card person"><span class="initials">SD</span><div><h3>I.H. Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p></div></article>
-          <article class="card person"><span class="initials">KM</span><div><h3>K.K.G.Y. Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p></div></article>
-          <article class="card person"><span class="initials">HT</span><div><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Consultant.jpeg" alt="Project consultant"><div><h3>Project Consultant</h3><p>Research guidance and academic supervision.</p></div></article>
+          <article class="card person"><img class="person-photo" src="assets/kavindu%20gayashan.jpeg" alt="T.G.K.G. Vijithapala"><div><h3>T.G.K.G. Vijithapala</h3><p>Lecture summarisation.</p><p>IT22187178</p></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Sonal%20Dilmith.jpeg" alt="I.H. Sonal Dilmith"><div><h3>I.H. Sonal Dilmith</h3><p>Hallucination-safe tutor.</p><p>IT22120120</p></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Yasas%20Mihiraj.jpeg" alt="K.K.G.Y. Mihiraj"><div><h3>K.K.G.Y. Mihiraj</h3><p>Emotion detection.</p><p>IT22224552</p></div></article>
+          <article class="card person"><img class="person-photo" src="assets/Hiran%20Thathsara.jpeg" alt="Hiran Thathsara"><div><h3>Hiran Thathsara</h3><p>Emotion and progress-aware reminders.</p><p>IT22371690</p></div></article>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="shell grid-2">
-        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">08 / Contact us</div><h2>Questions about the research?</h2><p>Use the general project contact details required by the website guideline. The form is a static demonstration and does not transmit data.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:project-team@example.com">project-team@example.com</a></p></div></div>
+        <div class="section-heading" data-reveal><div class="eyebrow" style="color: var(--teal);">09 / Contact us</div><h2>Questions about the research?</h2><p>Use the general project contact details required by the website guideline. The form is a static demonstration and does not transmit data.</p><div class="card" style="margin-top:24px;"><h3>Project contact</h3><p><strong>SLIIT R26-SE-022</strong><br>Research project information website<br><a href="mailto:project-team@example.com">project-team@example.com</a></p></div></div>
         <form class="card contact-form" data-reveal action="mailto:project-team@example.com" method="post" enctype="text/plain">
           <h3>General email template</h3>
           <label for="name">Your name</label><input id="name" name="name" type="text" required>
